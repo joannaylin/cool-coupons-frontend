@@ -2,14 +2,63 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>CoolCoupons!</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </head>
     <body>
+
+        <div class="vertical-center">
+            <!-- Initial login page -->
+            <div class="container" id="loginPage">
+                <div class="login-container">
+                    <h1>CoolCoupons</h1>
+                    <h5>Find Coupons, Save Money</h5>
+                    <p>Login as a:</p>
+                    <button class="btn-lg" id="userBtn">User</button>
+                    <button class="btn-lg" id="businessBtn">Business</button>
+                </div>
+            </div>
+            <!-- End initial login page -->
+
+            <!-- Login page for user -->
+            <div class="container" id="loginPageUser" hidden>
+                <div class="login-container">
+                    <h1>CoolCoupons</h1>
+                    <h5>Find Coupons, Save Money</h5>
+                    <p>Type in your username:</p>
+                    <form class="login-form" id="userLoginForm">
+                        <input type="text" name="username" id="userNameInput" placeholder="Username">
+                        <button class="btn-lg" id="userLoginBtn">Login</button>
+                    </form>
+                </div>
+            </div>
+            <!-- End login page for user -->
+
+            <!-- Login page for business -->
+            <div class="container" id="loginPageBusiness" hidden>
+                <div class="login-container">
+                    <h1>CoolCoupons</h1>
+                    <h5>Find Coupons, Save Money</h5>
+                    <p>Type in your business name:</p>
+                    <form class="login-form" id="businessLoginForm">
+                        <input type="text" name="business-name" id="businessNameInput" placeholder="Business Name">
+                        <button class="btn-lg" id="businessLoginBtn">Login</button>
+                    </form>
+                </div>
+            </div>
+            <!-- End login page for business -->
+        </div>
+
+        <!-- <div class="bottom-stripe"></div> -->
+
         <script src="src/isaac.js" defer></script>
         <script src="src/joanna.js" defer></script>
         <script src="src/event_listeners.js" defer></script>
         <script src="src/api_fetches.js" defer></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" defer></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous" defer></script>
     </body>
 </html>
