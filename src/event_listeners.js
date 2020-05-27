@@ -3,6 +3,7 @@
 const mainListeners = () => {
     userBtnListener()
     businessBtnListener()
+    createCouponDiv()
 }
 
 const userBtnListener = () => {
@@ -26,5 +27,20 @@ const businessBtnListener = () => {
         loginPageBusiness.hidden = false
     })
 }
+
+
+const createCouponDiv = () => {
+    let createCouponBtn = document.getElementById('createCouponBtn')
+    createCouponBtn.addEventListener('click', (event) => {
+        let couponContainer = document.getElementById("couponContainer");
+        let createCouponBtn = document.getElementById('createCouponBtn')
+        let newCouponContainer = document.getElementById('newCouponContainer')
+
+        couponContainer.hidden = true
+        createCouponBtn.hidden = true
+        newCouponContainer.hidden = false
+    })
+}
+
 
 mainListeners()
