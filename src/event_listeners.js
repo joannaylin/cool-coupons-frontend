@@ -42,5 +42,4 @@ const createCouponDiv = () => {
     })
 }
 
-
 mainListeners()

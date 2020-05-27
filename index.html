@@ -45,6 +45,7 @@
                     <h5>Find Coupons, Save Money</h5>
                     <p>Type in your business name:</p>
                     <form class="login-form" id="businessLoginForm">
+                        <p style="color: red" id="validationText" hidden>Wrong business name!</p>
                         <input type="text" name="business-name" id="businessNameInput" placeholder="Business Name">
                         <button class="btn-lg" id="businessLoginBtn">Login</button>
                     </form>
@@ -67,6 +68,10 @@
         </nav>
         <!-- End navbar for user-->
 
+        <div class="coupon-container container" id="couponContainer" hidden>
+            <!-- Render coupons here-->
+        </div>
+
         <!-- Create new coupon -->
         <div class="new-coupon-container" id="newCouponContainer" hidden>
             <div class="vertical-center">
@@ -83,10 +88,21 @@
         </div>
         <!-- End create new coupon form -->
 
-        <div class="coupon-container container" id="couponContainer" hidden>
-            <!-- Render coupons here-->
+        <!-- Edit new coupon -->
+        <div class="edit-coupon-container" id="editCouponContainer" hidden>
+            <div class="vertical-center">
+                <div class="container">
+                    <h1>Edit coupon:</h1>
+                    <form id="editCouponForm">
+                        <input type="text" id="editCouponNameInput" placeholder="Coupon name">
+                        <input type="text" id="editCouponCodeInput" placeholder="Coupon code">
+                        <input type="text" id="editCouponExpDateInput" placeholder="Exp. Date (YYYY-MM-DD)">
+                        <button class="btn-lg" id="updateCouponBtn">Update Coupon</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    
+        <!-- End edit new coupon form -->
 
         <!-- <div class="bottom-stripe"></div> -->
 
