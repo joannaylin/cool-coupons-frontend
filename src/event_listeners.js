@@ -1,6 +1,6 @@
 // Event listeners go here
 
-const main = () => {
+const mainListeners = () => {
     userBtnListener()
     businessBtnListener()
 }
@@ -27,4 +27,4 @@ const businessBtnListener = () => {
     })
 }
 
-main()
+mainListeners()

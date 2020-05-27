@@ -1,0 +1,104 @@
+#createCouponBtn {
+    height: 45px;
+    width: 165px;
+    margin-right: 10px;
+    background-color: #0984e3;
+    border: none;
+    border-radius: 0px;
+    color: #fff;
+}
+
+.coupon-container {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.coupon-card {
+    padding-top: 38.5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 300px;
+    background-color: #0984e3;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#editCouponBtn {
+    width: 165px;
+    margin-right: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 0px;
+    color: #0984e3;
+}
+
+#deleteCouponBtn {
+    width: 165px;
+    margin-left: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 0px;
+    color: #0984e3;
+}
+
+.new-coupon-container h1 {
+    text-align: center;
+    color: #0984e3;
+}
+
+#couponNameInput {
+    margin-top: 25px;
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    height: 46px;
+    position: relative;
+    border-radius: 0px;
+    border: none;
+    color: #6c6c6c;
+    font-size: 20px;
+    background-color: #e6e6e6;
+}
+
+#couponCodeInput {
+    margin-top: 25px;
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    height: 46px;
+    position: relative;
+    border-radius: 0px;
+    border: none;
+    color: #6c6c6c;
+    font-size: 20px;
+    background-color: #e6e6e6;
+}
+
+#couponExpDateInput {
+    margin-top: 25px;
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    height: 46px;
+    position: relative;
+    border-radius: 0px;
+    border: none;
+    color: #6c6c6c;
+    font-size: 20px;
+    background-color: #e6e6e6;
+}
+
+#postCouponBtn {
+    width: 100%;
+    margin-top: 25px;
+    margin-right: 10px;
+    background-color: #0984e3;
+    border: none;
+    border-radius: 0px;
+    color: #fff;
+}
