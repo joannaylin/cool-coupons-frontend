@@ -5,7 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>CoolCoupons!</title>
         <link rel="stylesheet" href="style.css">
+<<<<<<< HEAD
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="isaac.css">
+=======
         <link rel="stylesheet" href="joanna.css">
+>>>>>>> 989d611a07688dfe4377fccf588273767d3b3354
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </head>
     <body>
@@ -52,6 +57,10 @@
             <!-- End login page for business -->
         </div>
 
+        <!-- Create new coupon button -->
+        <button id="createCouponBtn" hidden>Create Coupon</button>
+        <!-- End create new coupon button -->
+
         <!-- Navbar for user-->
         <nav class="navbar fixed-top bg-light" id="navbar" hidden>
             <button id="sortBtn" type="button" class="btn-sm">Sort By Most Liked</button>
@@ -62,7 +71,23 @@
         </nav>
         <!-- End navbar for user-->
 
-        <div class="coupon-container" id="couponContainer" hidden>
+        <!-- Create new coupon -->
+        <div class="new-coupon-container" id="newCouponContainer" hidden>
+            <div class="vertical-center">
+                <div class="container">
+                    <h1>Create new coupon:</h1>
+                    <form id="newCouponForm">
+                        <input type="text" id="couponNameInput" placeholder="Coupon name">
+                        <input type="text" id="couponCodeInput" placeholder="Coupon code">
+                        <input type="text" id="couponExpDateInput" placeholder="Exp. Date (YYYY-MM-DD)">
+                        <button class="btn-lg" id="postCouponBtn">Create Coupon</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End create new coupon form -->
+
+        <div class="coupon-container container" id="couponContainer" hidden>
             <!-- Render coupons here-->
         </div>
     
