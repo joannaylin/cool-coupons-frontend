@@ -1,0 +1,26 @@
+#searchInput {
+  margin-right: 5px;
+  padding-left: 15px;
+  width: 250px;
+  height: 28px;
+  position: relative;
+  border-radius: 0px;
+  border: none;
+  color: #6c6c6c;
+  font-size: 20px;
+  background-color: #e6e6e6;
+}
+
+#searchBtn {
+  background-color: #0984e3;
+  color: #fff;
+  border-radius: 0px;
+  border: none; 
+}
+
+#sortBtn {
+  background-color: #0984e3;
+  color: #fff;
+  border-radius: 0px;
+  border: none;
+} 

@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>CoolCoupons!</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="joanna.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </head>
     <body>
@@ -50,6 +51,16 @@
             </div>
             <!-- End login page for business -->
         </div>
+
+        <!-- Navbar for user-->
+        <nav class="navbar fixed-top bg-light" id="navbar" hidden>
+            <button id="sortBtn" type="button" class="btn-sm">Sort By Most Liked</button>
+            <form class="form-inline" id="navSearch">
+                <input class="form-control" type="search" placeholder="Search" id="searchInput">
+                <button id="searchBtn" type="submit" class="btn-sm">Search</button>
+            </form>
+        </nav>
+        <!-- End navbar for user-->
 
         <div class="coupon-container" id="couponContainer" hidden>
             <!-- Render coupons here-->

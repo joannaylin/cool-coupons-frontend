@@ -1,6 +1,7 @@
 // Joanna's script
 var currentUser;
 
+
 // user login
 let userLoginForm = document.getElementById("userLoginForm");
 userLoginForm.addEventListener("submit", (event) => {
@@ -17,6 +18,8 @@ userLoginForm.addEventListener("submit", (event) => {
           loginsContainer.hidden = true;
           let couponContainer = document.getElementById("couponContainer");
           couponContainer.hidden = false;
+          let navbar = document.getElementById("navbar");
+          navbar.hidden = false;
           fetchCoupons();
         }
       });
@@ -37,22 +40,23 @@ function renderCoupon(coupon) {
   <p>${coupon.expiration_date}</p>
   <p data-id="${coupon.id}">${coupon.likes.length} ${
     coupon.likes.length === 1 ? "Like" : "Likes"
-  } <button>Like</button></p>
+  } <button id="like-btn">Like</button></p>
   </div>`;
   couponContainer.innerHTML += couponCard;
 }
 
-// added line 15 above, and line 38, changed line 34, added navbar lines 54-59 in index.html
+// added line 15 above, and line 38, changed line 34, added navbar lines in index.html, added padding-top for body
+// 
 // new stuff below:
 
 let couponContainer = document.getElementById("couponContainer");
 couponContainer.addEventListener("click", (event) => {
-  if (event.target.nodeName === "BUTTON") {
+  if (event.target.id === "like-btn") {
     event.preventDefault();
     let couponId = event.target.parentElement.dataset.id;
     let likeElement = event.target.parentElement;
     let likeNum = parseInt(event.target.parentElement.innerText);
-    likeElement.innerHTML = `${likeNum + 1} Likes <button>Like</button>`;
+    likeElement.innerHTML = `${likeNum + 1} Likes <button id="like-btn">Like</button>`;
 
     let formData = {
       id: currentUser.id,
@@ -72,4 +76,37 @@ couponContainer.addEventListener("click", (event) => {
       .then((resp) => resp.json())
       .then((like) => like);
   }
+});
+
+// navbar sort
+let navbar = document.getElementById("navbar");
+navbar.addEventListener("click", (event) => {
+  if (event.target.id === "sortBtn") {
+    event.preventDefault();
+    couponContainer.innerHTML = "";
+
+    fetch("http://localhost:3000/coupons")
+      .then((resp) => resp.json())
+      .then((coupons) =>
+        coupons
+          .sort((a, b) => b.likes.length - a.likes.length)
+          .forEach((coupon) => renderCoupon(coupon))
+      );
+  }
+});
+
+// navbar search
+let navSearch = document.getElementById("navSearch");
+navSearch.addEventListener("submit", (event) => {
+  event.preventDefault();
+  let search = event.target[0].value;
+  couponContainer.innerHTML = "";
+
+  fetch("http://localhost:3000/coupons")
+    .then((resp) => resp.json())
+    .then((coupons) =>
+      coupons
+        .filter((coupon) => coupon.business.name.toLowerCase().includes(search))
+        .forEach((coupon) => renderCoupon(coupon))
+    );
 });
