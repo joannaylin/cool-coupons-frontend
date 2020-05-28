@@ -5,6 +5,7 @@ const mainAPIFetches = () => {
   addLike();
   navbarSort();
   navbarSearch();
+  industrySearch();
   businessLogin();
   createCoupon();
   editCoupon();
@@ -94,7 +95,7 @@ const addLike = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify(formData),
       };

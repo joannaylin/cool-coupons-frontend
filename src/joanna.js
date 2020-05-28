@@ -1,6 +1,41 @@
 // Joanna's script
 // let currentUser;
 
+// industry search
+const industrySearch = () => {
+  const navIndustrySearch = document.getElementById("navIndustrySearch");
+  navIndustrySearch.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const search = event.target[0].value;
+    couponContainer.innerHTML = "";
+
+    fetch("http://localhost:3000/coupons")
+      .then((resp) => resp.json())
+      .then((coupons) =>
+        coupons
+          .filter((coupon) =>
+            coupon.business.business_type.toLowerCase().includes(search)
+          )
+          .forEach((coupon) => renderCoupon(coupon))
+      );
+  });
+};
+
+
+// const myCouponsBtn = document.getElementById("myCouponsBtn");
+// myCouponsBtn.addEventListener("click", (event) => {
+//   event.preventDefault();
+//   const couponContainer = document.getElementById("couponContainer");
+//   couponContainer.innerHTML = "";
+
+//   fetch("http://localhost:3000/coupons")
+//     .then((resp) => resp.json())
+//     .then((coupons) =>
+//       coupons.filter((coupon) => {
+//         console.log(coupon);
+//       })
+//     );
+// });
 
 // // user login
 // const userLoginForm = document.getElementById("userLoginForm");
@@ -46,7 +81,7 @@
 // }
 
 // added line 15 above, and line 38, changed line 34, added navbar lines in index.html, added padding-top for body
-// 
+//
 // new stuff below:
 
 // const couponContainer = document.getElementById("couponContainer");
