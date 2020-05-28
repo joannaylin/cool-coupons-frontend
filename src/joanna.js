@@ -1,25 +1,25 @@
 // Joanna's script
 // let currentUser;
 
-// industry search
-const industrySearch = () => {
-  const navIndustrySearch = document.getElementById("navIndustrySearch");
-  navIndustrySearch.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const search = event.target[0].value;
-    couponContainer.innerHTML = "";
+// // industry search
+// const industrySearch = () => {
+//   const navIndustrySearch = document.getElementById("navIndustrySearch");
+//   navIndustrySearch.addEventListener("submit", (event) => {
+//     event.preventDefault();
+//     const search = event.target[0].value;
+//     couponContainer.innerHTML = "";
 
-    fetch("http://localhost:3000/coupons")
-      .then((resp) => resp.json())
-      .then((coupons) =>
-        coupons
-          .filter((coupon) =>
-            coupon.business.business_type.toLowerCase().includes(search)
-          )
-          .forEach((coupon) => renderCoupon(coupon))
-      );
-  });
-};
+//     fetch("http://localhost:3000/coupons")
+//       .then((resp) => resp.json())
+//       .then((coupons) =>
+//         coupons
+//           .filter((coupon) =>
+//             coupon.business.business_type.toLowerCase().includes(search)
+//           )
+//           .forEach((coupon) => renderCoupon(coupon))
+//       );
+//   });
+// };
 
 
 // const myCouponsBtn = document.getElementById("myCouponsBtn");

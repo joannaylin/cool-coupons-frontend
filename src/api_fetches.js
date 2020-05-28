@@ -20,6 +20,8 @@ const userLogin = () => {
   let userLoginForm = document.getElementById("userLoginForm");
   let loginsContainer = document.getElementById("loginsContainer");
   let couponContainer = document.getElementById("couponContainer");
+  let nameGreeting = document.getElementById('nameGreeting')
+  let amountOfCoupons = document.getElementById('amountOfCoupons')
   const navbar = document.getElementById("navbar");
 
   userLoginForm.addEventListener("submit", (event) => {
@@ -45,6 +47,7 @@ const userLogin = () => {
         currentUser = user;
         loginsContainer.hidden = true;
         couponContainer.hidden = false;
+        nameGreeting.innerText = `Welcome, ${user.username}!`
         navbar.hidden = false;
         fetchCoupons();
       });
@@ -60,14 +63,17 @@ const fetchCoupons = () => {
 
 function renderCoupon(coupon) {
   let couponCard = `
-    <div data-id="${coupon.id}">
+    <div class="coupon-card" data-id="${coupon.id}">
       <div class="coupon-info-container">
-        <h1>${coupon.name}</h1>
-        <h3>${coupon.code}</h3>
-        <p>${coupon.expiration_date}</p>
+        <h2>${coupon.name}</h2>
+        <br>
+        <h3>Code: ${coupon.code}</h3>
+        <br>
+        <h5>Industry: ${coupon.business.business_type} | Location: ${coupon.business.location}</h5>
+        <p>Exp. Date: ${coupon.expiration_date}</p>
         <p data-id="${coupon.id}">${coupon.likes} ${
     coupon.likes === 1 ? "Like" : "Likes"
-  } <button id="like-btn">Like</button></p>
+  } <button class="btn-sm" id="like-btn">Like</button></p>
       </div>
     </div>`;
   couponContainer.innerHTML += couponCard;
@@ -146,6 +152,26 @@ const navbarSearch = () => {
   });
 };
 
+// industry search
+const industrySearch = () => {
+  const navIndustrySearch = document.getElementById("navIndustrySearch");
+  navIndustrySearch.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const search = event.target[0].value;
+    couponContainer.innerHTML = "";
+
+    fetch("http://localhost:3000/coupons")
+      .then((resp) => resp.json())
+      .then((coupons) =>
+        coupons
+          .filter((coupon) =>
+            coupon.business.business_type.toLowerCase().includes(search)
+          )
+          .forEach((coupon) => renderCoupon(coupon))
+      );
+  });
+};
+
 // business login
 const businessLogin = () => {
   let businessLoginForm = document.getElementById("businessLoginForm");
@@ -153,6 +179,8 @@ const businessLogin = () => {
   let couponContainer = document.getElementById("couponContainer");
   let createCouponBtn = document.getElementById("createCouponBtn");
   let validationText = document.getElementById('validationText')
+  let nameGreeting = document.getElementById('nameGreeting')
+  let amountOfCoupons = document.getElementById('amountOfCoupons')
 
   businessLoginForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -167,6 +195,9 @@ const businessLogin = () => {
             currentBusiness = business
             loginsContainer.hidden = true;
             couponContainer.hidden = false;
+            couponContainer.style.marginTop = '50px'
+            nameGreeting.innerHTML = `Welcome, ${business.name}!`
+            amountOfCoupons.innerHTML = `You have ${business.coupons.length} coupons.`
             createCouponBtn.hidden = false;
             renderBusinessCoupons(business);
           } else {
@@ -182,7 +213,8 @@ const renderBusinessCoupons = (business) => {
   business.coupons.forEach((coupon) => {
     let couponCard = `
     <div class="coupon-card" data-id="${coupon.id}">
-      <h1>${coupon.name}</h1>
+      <h2>${coupon.name}</h2>
+      <br>
       <h3>Code: ${coupon.code}</h3>
       <p>${coupon.likes} Likes</p>
       <p>Exp. date: ${coupon.expiration_date}</p>
@@ -240,7 +272,8 @@ const renderBusinessCoupon = (coupon) => {
 
   let couponCard = `
   <div class="coupon-card" data-id="${coupon.id}">
-    <h1>${coupon.name}</h1>
+    <h2>${coupon.name}</h2>
+    <br>
     <h3>Code: ${coupon.code}</h3>
     <p>${coupon.likes} Likes</p>
     <p>Exp. date: ${coupon.expiration_date}</p>
@@ -250,6 +283,7 @@ const renderBusinessCoupon = (coupon) => {
   couponContainer.innerHTML += couponCard;
 };
 
+// edit coupon
 const editCoupon = () => {
   document.addEventListener('click', (event) => {
     if (event.target.id === "editCouponBtn") {
@@ -308,6 +342,7 @@ const editCoupon = () => {
   })
 }
 
+// delete coupon
 const deleteCoupon = () => {
   document.addEventListener("click", (event) => {
     if (event.target.id === "deleteCouponBtn") {
@@ -315,10 +350,12 @@ const deleteCoupon = () => {
       let couponCard = deleteBtn.parentElement;
       let couponId = deleteBtn.dataset.id;
 
+      let amountOfCoupons = document.getElementById('amountOfCoupons')
+
       const deleteCouponURL = `http://localhost:3000/coupons/${couponId}`;
 
       const configObj = {
-        method: "DELETE",
+        method: "DELETE"
       };
 
       fetch(deleteCouponURL, configObj)
@@ -327,6 +364,7 @@ const deleteCoupon = () => {
         })
         .then(() => {
           couponCard.remove();
+          amountOfCoupons.innerHTML = `You have ${parseInt(amountOfCoupons.innerText.split(' ')[2]) - 1} coupons.`
         });
     }
   });
