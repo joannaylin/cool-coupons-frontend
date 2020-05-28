@@ -5,6 +5,7 @@ const mainAPIFetches = () => {
   addLike();
   navbarSort();
   navbarSearch();
+  industrySearch();
   businessLogin();
   createCoupon();
   editCoupon();
@@ -65,7 +66,7 @@ function renderCoupon(coupon) {
         <h3>${coupon.code}</h3>
         <p>${coupon.expiration_date}</p>
         <p data-id="${coupon.id}">${coupon.likes} ${
-    coupon.likes.length === 1 ? "Like" : "Likes"
+    coupon.likes === 1 ? "Like" : "Likes"
   } <button id="like-btn">Like</button></p>
       </div>
     </div>`;
@@ -94,7 +95,7 @@ const addLike = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify(formData),
       };
@@ -118,7 +119,7 @@ const navbarSort = () => {
         .then((resp) => resp.json())
         .then((coupons) =>
           coupons
-            .sort((a, b) => b.likes.length - a.likes.length)
+            .sort((a, b) => b.likes - a.likes)
             .forEach((coupon) => renderCoupon(coupon))
         );
     }
