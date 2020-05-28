@@ -1,7 +1,7 @@
 html,
 body {
     padding: 0;
-    padding-top: 30px;
+    /* padding-top: 30px; */
     margin: 0;
  }
 
@@ -118,25 +118,47 @@ body {
 }
 
 #createCouponBtn {
-    height: 45px;
-    width: 165px;
-    margin-right: 10px;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    height: 60px;
+    width: 60px;
     background-color: #0984e3;
     border: none;
-    border-radius: 0px;
+    border-radius: 100%;
     color: #fff;
 }
 
+.plus-icon {
+    right: 0.5px;
+    font-size: 25px;
+    position: relative;
+    top: 3px;
+}
+
 .coupon-container {
+    margin-top: 100px;
     padding-left: 100px;
     padding-right: 100px;
 }
 
+#nameGreeting {
+    text-align: center;
+    color: #0984e3;
+}
+
+#amountOfCoupons {
+    margin-bottom: 25px;
+    text-align: center;
+    color: #0984e3;
+}
+
 .coupon-card {
-    padding-top: 38.5px;
-    margin-top: 30px;
+    padding: 25px;
+    margin: auto;
     margin-bottom: 30px;
-    height: 300px;
+    height: auto;
+    width: 510px;
     background-color: #0984e3;
     color: #fff;
     align-items: center;
@@ -155,6 +177,15 @@ body {
 
 #deleteCouponBtn {
     width: 165px;
+    margin-left: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 0px;
+    color: #0984e3;
+}
+
+#like-btn {
+    width: 60px;
     margin-left: 10px;
     background-color: #fff;
     border: none;
@@ -222,16 +253,6 @@ body {
     color: #fff;
 }
 
-
-
-/* .bottom-stripe {
-    width: 100%;
-    height: 10px;
-    background-color: #0984e3;
-    position: relative;
-    top: -15px;
-} */
-
 #searchInput {
     margin-right: 5px;
     padding-left: 15px;
@@ -243,18 +264,78 @@ body {
     color: #6c6c6c;
     font-size: 20px;
     background-color: #e6e6e6;
-  }
+}
   
-  #searchBtn {
+#searchBtn {
     background-color: #0984e3;
     color: #fff;
     border-radius: 0px;
     border: none; 
-  }
+}
   
-  #sortBtn {
+#sortBtn {
     background-color: #0984e3;
     color: #fff;
     border-radius: 0px;
     border: none;
-  } 
+} 
+
+.edit-coupon-container h1 {
+    text-align: center;
+    color: #0984e3;
+}
+
+#editCouponNameInput {
+    margin-top: 25px;
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    height: 46px;
+    position: relative;
+    border-radius: 0px;
+    border: none;
+    color: #6c6c6c;
+    font-size: 20px;
+    background-color: #e6e6e6;
+}
+
+#editCouponCodeInput {
+    margin-top: 25px;
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    height: 46px;
+    position: relative;
+    border-radius: 0px;
+    border: none;
+    color: #6c6c6c;
+    font-size: 20px;
+    background-color: #e6e6e6;
+}
+
+#editCouponExpDateInput {
+    margin-top: 25px;
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    height: 46px;
+    position: relative;
+    border-radius: 0px;
+    border: none;
+    color: #6c6c6c;
+    font-size: 20px;
+    background-color: #e6e6e6;
+}
+
+#updateCouponBtn {
+    width: 100%;
+    margin-top: 25px;
+    margin-right: 10px;
+    background-color: #0984e3;
+    border: none;
+    border-radius: 0px;
+    color: #fff;
+}
