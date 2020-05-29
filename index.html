@@ -31,6 +31,7 @@
                     <h5>Find Coupons, Save Money</h5>
                     <p>Type in your username:</p>
                     <form class="login-form" id="userLoginForm">
+                        <p style="color: red" id="validationTextUser" hidden>Username input cannot be empty!</p>
                         <input type="text" name="username" id="userNameInput" placeholder="Username">
                         <button class="btn-lg" id="userLoginBtn">Login</button>
                     </form>
@@ -45,7 +46,7 @@
                     <h5>Find Coupons, Save Money</h5>
                     <p>Type in your business name:</p>
                     <form class="login-form" id="businessLoginForm">
-                        <p style="color: red" id="validationText" hidden>Wrong business name!</p>
+                        <p style="color: red" id="validationTextBusiness" hidden>Wrong business name!</p>
                         <input type="text" name="business-name" id="businessNameInput" placeholder="Business Name">
                         <button class="btn-lg" id="businessLoginBtn">Login</button>
                     </form>

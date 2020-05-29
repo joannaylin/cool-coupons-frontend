@@ -22,43 +22,56 @@ const userLogin = () => {
   let couponContainer = document.getElementById("couponContainer");
   let nameGreeting = document.getElementById('nameGreeting')
   let amountOfCoupons = document.getElementById('amountOfCoupons')
+  let validationTextUser = document.getElementById('validationTextUser')
   const navbar = document.getElementById("navbar");
 
   userLoginForm.addEventListener("submit", (event) => {
     event.preventDefault();
     let userValue = event.target[0].value;
 
-    const formData = {
-      name: userValue,
-    };
+    if (userValue) {
+      const formData = {
+        name: userValue,
+      };
 
-    const formObj = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(formData),
-    };
+      const formObj = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      };
 
-    fetch("http://localhost:3000/users", formObj)
-      .then((resp) => resp.json())
-      .then((user) => {
-        currentUser = user;
-        loginsContainer.hidden = true;
-        couponContainer.hidden = false;
-        nameGreeting.innerText = `Welcome, ${user.username}!`
-        navbar.hidden = false;
-        fetchCoupons();
-      });
+      fetch("http://localhost:3000/users", formObj)
+        .then((resp) => resp.json())
+        .then((user) => {
+          currentUser = user;
+          loginsContainer.hidden = true;
+          couponContainer.hidden = false;
+          nameGreeting.innerText = `Welcome, ${user.username}!`
+          navbar.hidden = false;
+          fetchCoupons();
+        });
+    } else {
+      validationTextUser.hidden = false;
+    }
   });
 };
 
 // fetch coupons
 const fetchCoupons = () => {
+  let amountOfCoupons = document.getElementById('amountOfCoupons')
+
   fetch("http://localhost:3000/coupons")
     .then((resp) => resp.json())
-    .then((coupons) => coupons.forEach((coupon) => renderCoupon(coupon)));
+    .then(coupons => {
+      amountOfCoupons.innerText = `There are ${coupons.length} coupons.`
+
+      coupons.forEach(coupon => {
+        renderCoupon(coupon)
+      })
+    })
 };
 
 function renderCoupon(coupon) {
@@ -178,7 +191,7 @@ const businessLogin = () => {
   let loginsContainer = document.getElementById("loginsContainer");
   let couponContainer = document.getElementById("couponContainer");
   let createCouponBtn = document.getElementById("createCouponBtn");
-  let validationText = document.getElementById('validationText')
+  let validationTextBusiness = document.getElementById('validationTextBusiness')
   let nameGreeting = document.getElementById('nameGreeting')
   let amountOfCoupons = document.getElementById('amountOfCoupons')
 
@@ -201,7 +214,7 @@ const businessLogin = () => {
             createCouponBtn.hidden = false;
             renderBusinessCoupons(business);
           } else {
-            validationText.hidden = false
+            validationTextBusiness.hidden = false
           }
         })
       })
