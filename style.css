@@ -280,6 +280,13 @@ body {
     border: none;
 } 
 
+#industryBtn {
+    background-color: #0984e3;
+    color: #fff;
+    border-radius: 0px;
+    border: none;
+}  
+
 .edit-coupon-container h1 {
     text-align: center;
     color: #0984e3;
