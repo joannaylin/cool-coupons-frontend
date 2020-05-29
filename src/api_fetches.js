@@ -158,7 +158,7 @@ const navbarSearch = () => {
       .then((coupons) =>
         coupons
           .filter((coupon) =>
-            coupon.business.name.toLowerCase().includes(search)
+            coupon.business.name.toLowerCase().includes(search.toLowerCase())
           )
           .forEach((coupon) => renderCoupon(coupon))
       );
@@ -178,7 +178,7 @@ const industrySearch = () => {
       .then((coupons) =>
         coupons
           .filter((coupon) =>
-            coupon.business.business_type.toLowerCase().includes(search)
+            coupon.business.business_type.toLowerCase().includes(search.toLowerCase())
           )
           .forEach((coupon) => renderCoupon(coupon))
       );
@@ -241,8 +241,7 @@ const renderBusinessCoupons = (business) => {
 const createCoupon = () => {
   let createCouponBtn = document.getElementById("createCouponBtn");
   let couponContainer = document.getElementById("couponContainer");
-  let newCouponContainer = document.getElementById("newCouponContainer");
-
+  let newCouponContainer = document.getElementById("newCouponContainer");  
   let newCouponForm = document.getElementById("newCouponForm");
 
   newCouponForm.addEventListener("submit", (event) => {
@@ -274,15 +273,16 @@ const createCoupon = () => {
         createCouponBtn.hidden = false;
         couponContainer.hidden = false;
         newCouponContainer.hidden = true;
-
         renderBusinessCoupon(coupon);
+        let amountOfCoupons = document.getElementById('amountOfCoupons')
+        amountOfCoupons.innerHTML = `You have ${parseInt(amountOfCoupons.innerText.split(' ')[2]) + 1} coupons.`
       });
   });
 };
 
 const renderBusinessCoupon = (coupon) => {
   let couponContainer = document.getElementById("couponContainer");
-
+  
   let couponCard = `
   <div class="coupon-card" data-id="${coupon.id}">
     <h2>${coupon.name}</h2>
@@ -294,6 +294,7 @@ const renderBusinessCoupon = (coupon) => {
     <button class="btn-lg" id="deleteCouponBtn" data-id="${coupon.id}">Delete Coupon</button>
   </div>`;
   couponContainer.innerHTML += couponCard;
+  
 };
 
 // edit coupon
